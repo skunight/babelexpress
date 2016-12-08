@@ -27,10 +27,10 @@ export default class App {
     app.use(log4js.connectLogger(logger,{level:log4js.levels.INFO}))
     app.get('/',(req,res) => {
       let msg = req.query.msg
-      res.send('Hello World '+msg)
+      res.send(`Hello World ${msg}`)
     })
     let server = http.createServer(app)
     server.listen(this.port,'0.0.0.0')
-    server.on('listening',() => console.log('Listening on '+this.port))
+    server.on('listening',() => console.log(`Listening on ${this.port} and env is ${app.get('env')}`))
   }
 }
