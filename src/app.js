@@ -1,4 +1,6 @@
 import express from 'express'
+import fs from 'fs'
+
 let app = express()
 
 app.get('/',(req,res) =>
