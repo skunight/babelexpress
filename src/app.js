@@ -31,8 +31,6 @@ export default class App {
     })
     let server = http.createServer(app)
     server.listen(this.port,'0.0.0.0')
-    server.on('listening',()=>
-      console.log('Listening on '+this.port)
-    )
+    server.on('listening',() => console.log('Listening on '+this.port))
   }
 }
