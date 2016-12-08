@@ -4,6 +4,8 @@ import log4js from 'log4js'
 import http from 'http'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
+import api from './router/api'
+
 export default class App {
   constructor(port){
     log4js.configure({
@@ -25,10 +27,7 @@ export default class App {
     app.use(bodyParser.urlencoded({extended:false}))
     app.use(cookieParser())
     app.use(log4js.connectLogger(logger,{level:log4js.levels.INFO}))
-    app.get('/',(req,res) => {
-      let msg = req.query.msg
-      res.send(`Hello World ${msg}`)
-    })
+    app.use('/',api)
     let server = http.createServer(app)
     server.listen(this.port,'0.0.0.0')
     server.on('listening',() => console.log(`Listening on ${this.port} and env is ${app.get('env')}`))
