@@ -34,7 +34,7 @@ gulp.task("watch",function(){
 
 gulp.task("start",function () {
   nodemon({
-    script: 'dist/app',
+    script: 'dist/index',
     ext: 'js json',
     "events": {
       "restart": "echo 'display notification \"App restarted due to:\n'$FILENAME'\" with title \"nodemon\"'"
