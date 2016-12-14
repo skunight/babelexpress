@@ -11,7 +11,7 @@ const Foo = {
 @mixins(Foo)
 export default class User{
 
-  @cache('redis')
+  @cache('user','redis')
   static async save({name,passwd}) {
     let user = await Mysql.create({name,passwd})
     return user

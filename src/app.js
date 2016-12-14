@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import api from './router/api'
 import ResponseIntercept from './intercept/responseIntercept'
-import mysql from './db/mysql'
+import Redis from './db/redis'
 export default class App {
   constructor(port){
     this.port = port || process.env.PORT || 3000
@@ -21,6 +21,7 @@ export default class App {
   run() {
     let app = express()
     let logger = log4js.getLogger('normal')
+    global.Redis = Redis.connection
     app.set('trust proxy')
     app.set('port',this.port)
     app.use(compression())
