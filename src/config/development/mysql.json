@@ -1,0 +1,19 @@
+{
+  "name":"te",
+  "write":{
+    "hostname":"172.17.0.1",
+    "port":3306,
+    "username":"root",
+    "password":"20070428",
+    "uri":"mysql://root:20070428@172.17.0.1/te?reconnect=true",
+    "jdbcUrl":"jdbc:mysql://172.17.0.1/te?user=root&password=20070428"
+  },
+  "read":{
+    "hostname":"172.17.0.1",
+    "port":3306,
+    "username":"root",
+    "password":"20070428",
+    "uri":"mysql://root:20070428@172.17.0.1/te?reconnect=true",
+    "jdbcUrl":"jdbc:mysql://172.17.0.1/te?user=root&password=20070428"
+  }
+}

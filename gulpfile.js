@@ -20,6 +20,12 @@ gulp.task("clean",function(){
   return stream;
 });
 
+gulp.task("copyConfig",function(){
+  var stream = gulp.src("src/config/**/*")
+  .pipe(gulp.dest('dist/config'));
+  return stream;
+});
+
 gulp.task("watch",function(){
   watch = gulp.watch("src/**/*.js");
   watch.on("change",function(event){
@@ -45,9 +51,9 @@ gulp.task("start",function () {
 });
 
 gulp.task("release",["clean"],function(){
-  gulp.start(["compile"])
+  gulp.start(["copyConfig","compile"])
 });
 
-gulp.task("dev",["compile","watch"],function(){
+gulp.task("dev",["copyConfig","compile","watch"],function(){
   gulp.start("start");
 });

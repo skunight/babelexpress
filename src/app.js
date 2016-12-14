@@ -5,16 +5,17 @@ import http from 'http'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import api from './router/api'
-
+import ResponseIntercept from './intercept/responseIntercept'
+import mysql from './db/mysql'
 export default class App {
   constructor(port){
+    this.port = port || process.env.PORT || 3000
     log4js.configure({
       appenders:[
         {type:'console'}
       ],
       replaceConsole:true,
     })
-    this.port = port || process.env.PORT || 3000
   }
 
   run() {
@@ -27,6 +28,7 @@ export default class App {
     app.use(bodyParser.urlencoded({extended:false}))
     app.use(cookieParser())
     app.use(log4js.connectLogger(logger,{level:log4js.levels.INFO}))
+    app.use(ResponseIntercept.filter)
     app.use('/',api)
     let server = http.createServer(app)
     server.listen(this.port,'0.0.0.0')
